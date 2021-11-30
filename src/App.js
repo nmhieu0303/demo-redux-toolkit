@@ -2,11 +2,22 @@ import React from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { Route, Routes } from 'react-router';
+import { routerList } from './utils/router';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './components/common/Header';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <BrowserRouter>
+          <Header />
+        <Routes>
+          {routerList.map((route, index) => <Route key={index} path={route.path} element={route.coponent}></Route>)}
+        </Routes>
+      </BrowserRouter>
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
         <p>
@@ -50,7 +61,7 @@ function App() {
             React Redux
           </a>
         </span>
-      </header>
+      </header> */}
     </div>
   );
 }
